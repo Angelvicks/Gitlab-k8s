@@ -8,7 +8,7 @@ spec:
       image: gitlab/gitlab-ce:16.2.8-ce.0
       env:
       #This ip address is for the gitlab machine hence the db will a local db
-
+#This file is just for testing purposes, to see real result use the deploy file
         - name: DB_HOST
           value: 192.168.8.102
         - name: DB_PORT
@@ -17,6 +17,11 @@ spec:
           value: gitlab
         - name: DB_USER
           value: utilisateur-base-de-donnees
+#Modified the pwd and email to ur liking for login purposes as a Gitlab administrator
+        - name: GITLAB_ROOT_PASSWORD
+          value: MyPassword123
+        - name: GITLAB_ROOT_EMAIL
+          value: tankouantchancthou@gmail.com
         - name: postgres
           valueFrom:
             secretKeyRef:
