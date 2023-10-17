@@ -37,11 +37,11 @@ spec:
               name: cache-volume
           resources:
             limits:
-              cpu: "3"
-              memory: "5Gi"
+              cpu: "4"
+              memory: "7Gi"
             requests:
-              cpu: "2"
-              memory: "3Gi"
+              cpu: "3"
+              memory: "6Gi"
       volumes:
         - name: cache-volume
           persistentVolumeClaim:
