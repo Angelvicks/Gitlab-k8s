@@ -14,26 +14,34 @@ spec:
     spec:
       containers:
         - name: gitlab
-          image: gitlab/gitlab-ce:16.2.8-ce.0
+          image: gitlab/gitlab-ce:nightly
+          #16.2.8-ce.0
           env:
           #The ip address is configured inside the host file of the machine and its the ip address of the postgres host machine
-            - name: DB_HOST
-              value:  postgres.local
-            - name: DB_PORT
-              value: "30007"
-            - name: DB_NAME
-              value: gitlab-db
-            - name: DB_USER
-              value: gitlab
-            - name: DB_PASSWORD
-              value: gitlab
+            #- name: DB_HOST
+            #  value:  postgres.local
+           # - name: DB_PORT
+            #  value: "30007"
+            #- name: DB_NAME
+           #   value: gitlab-db
+            #- name: DB_USER
+           #   value: gitlab
+           # - name: DB_PASSWORD
+            #  value: gitlab
             - name: GITLAB_ROOT_PASSWORD
               value: MyPassword123
             - name: GITLAB_ROOT_EMAIL
               value: tankouantchancthou@gmail.com
           volumeMounts:
-            - mountPath: /etc/gitlab
+            - mountPath: /var/opt/gitlab
               name: cache-volume
+          resources:
+            limits:
+              cpu: "3"
+              memory: "5Gi"
+            requests:
+              cpu: "2"
+              memory: "3Gi"
       volumes:
         - name: cache-volume
           persistentVolumeClaim:
